@@ -13,15 +13,6 @@ void F_C_Table() {
   }
 }
 
-void repeat_me() {
-  int c;
-
-  /* getchar() consumes a bit so we can inline it's assignment to c */
-  while ((c = getchar()) != EOF) {
-    putchar(c);
-  }
-}
-
 int main() {
   printf("hello, world\n");
   F_C_Table();
