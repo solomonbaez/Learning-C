@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+// strictly define maxlen -> prevent overflow
 #define MAXLEN 1000
 int get_ln(char line[], int max_line);
 void copy_ln(char to[], char from[]);
