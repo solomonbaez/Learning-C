@@ -2,18 +2,21 @@
 
 int bs(int nums[], int target, int r) {
   int l = 0;
-  while (l <= r) {
-    int m = (l + r) / 2;
+  int m = (l + r) / 2;
+  while (l <= r && target != nums[m]) {
+    m = (l + r) / 2;
     if (target < nums[m]) {
       r = m - 1;
-    } else if (target > nums[m]) {
-      l = m + 1;
     } else {
-      return 1;
+      l = m + 1;
     }
   }
 
-  return 0;
+  if (target == nums[m]) {
+    return 1;
+  } else {
+    return 0;
+  }
 }
 
 int main(void) {
@@ -22,10 +25,12 @@ int main(void) {
     x[i] = i;
   }
 
-  int result = bs(x, 4, 5);
+  int result = bs(x, 10, 5);
   if (result == 1) {
     printf("true\n");
   } else {
     printf("false\n");
   }
+
+  return 0;
 }
