@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include "calculator.h"
+
 #define BUFSIZE 100
 
 char buf[BUFSIZE];

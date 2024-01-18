@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <ctype.h>
+#include "calculator.h"
 
 int get_char(void);
 void un_get_char(int);
@@ -27,5 +28,5 @@ int get_op(char s[]) {
     un_get_char(c);
   }
 
-  return '0';
+  return NUMBER;
 }

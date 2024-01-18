@@ -1,12 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h> // atof()
+#include "calculator.h"
 
 #define MAX_OP 100
-#define NUMBER '0'
-
-int get_op(char []);
-void push(double);
-double pop(void);
 
 int main(void) {
   int op;
