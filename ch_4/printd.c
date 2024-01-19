@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void atoi_recursive(int n) {
+void printd(int n) {
   int sign = 1;
 
   if (n < 0) {
@@ -9,14 +9,14 @@ void atoi_recursive(int n) {
   }
 
   if (n / 10) {
-    atoi_recursive(n / 10);
+    printd(n / 10);
   }
 
   putchar(n % 10 + '0');
 }
 
 int main(void) {
-  atoi_recursive(10110);
+  printd(10110);
   putchar('\n');
 
   return 0;
