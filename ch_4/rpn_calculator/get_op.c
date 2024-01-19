@@ -2,9 +2,6 @@
 #include <ctype.h>
 #include "calculator.h"
 
-int get_char(void);
-void un_get_char(int);
-
 int get_op(char s[]) {
   int i, c;
   while ((s[0] = c = get_char()) == ' ' || c == '\t');

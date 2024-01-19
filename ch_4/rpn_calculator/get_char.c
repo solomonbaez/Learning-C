@@ -3,8 +3,8 @@
 
 #define BUFSIZE 100
 
-char buf[BUFSIZE];
-int b_i = 0;
+static char buf[BUFSIZE];
+static int b_i = 0;
 
 int get_char(void) {
   return (b_i > 0) ? buf[--b_i] : getchar();

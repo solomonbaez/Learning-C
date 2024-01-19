@@ -3,8 +3,8 @@
 
 #define MAXVAL 100
 
-double stack[MAXVAL];
-int s_i = 0;
+static double stack[MAXVAL];
+static int s_i = 0;
 
 void push(double n) {
   if (s_i < MAXVAL) {
