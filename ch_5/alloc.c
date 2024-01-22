@@ -23,25 +23,25 @@ void alloc_free(char *p) {
   }
 }
 
-int main(void) {
-  // Allocate memory for a string
-  char *s = alloc(13); // "hello, world" is 13 characters including the null terminator
-
-  if (s != 0) {
-    // Copy the string "hello, world" into the allocated memory
-    char *src = "hello, world";
-    while ((*s++ = *src++) != '\0');
-
-    // Print the allocated string
-    printf("Allocated string: %s\n", s - 13);
-    printf("Allocated pointer: %s\n", alloc_cp - 13);
-
-    // Free the allocated memory
-    alloc_free(s - 13);
-    printf("Freed pointer: %s\n", alloc_cp);
-  } else {
-    printf("Memory allocation failed\n");
-  }
-
-  return 0;
-}
+// int main(void) {
+//   // Allocate memory for a string
+//   char *s = alloc(13); // "hello, world" is 13 characters including the null terminator
+//
+//   if (s != 0) {
+//     // Copy the string "hello, world" into the allocated memory
+//     char *src = "hello, world";
+//     while ((*s++ = *src++) != '\0');
+//
+//     // Print the allocated string
+//     printf("Allocated string: %s\n", s - 13);
+//     printf("Allocated pointer: %s\n", alloc_cp - 13);
+//
+//     // Free the allocated memory
+//     alloc_free(s - 13);
+//     printf("Freed pointer: %s\n", alloc_cp);
+//   } else {
+//     printf("Memory allocation failed\n");
+//   }
+//
+//   return 0;
+// }
