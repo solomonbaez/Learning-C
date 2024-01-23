@@ -10,7 +10,16 @@ void write_lines(char *line_p[], int n_lines);
 void qsort(char *line_p[], int l, int r);
 
 int main(void) {
-  return 0;
+  int n_lines;
+
+  if ((n_lines = read_lines(line_p, MAXLINES)) >= 0) {
+    qsort(line_p, 0, n_lines - 1);
+    write_lines(line_p, n_lines);
+    return 0;
+  } else {
+    printf("error: input is too large to sort\n");
+    return 1;
+  }
 }
 
 #define MAXLEN 1000
