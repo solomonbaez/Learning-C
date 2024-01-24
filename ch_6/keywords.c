@@ -2,20 +2,18 @@
 #include <ctype.h>
 #include <string.h>
 #define NKEYS (sizeof key_table / sizeof key_table[0])
-#define MAXWORD 100
+#define MAXWORD 200
 
 struct key {
   char *word;
   int count;
 } key_table[] = {
-  { "int", 0 },
-  { "float", 0},
+  { "char", 0},
   { "double", 0},
+  { "float", 0},
+  { "int", 0 },
   { "long", 0},
   { "short", 0},
-  { "char", 0},
-  { "const", 0},
-  { "extern", 0},
 };
 
 int get_word(char *, int);
@@ -25,12 +23,9 @@ int main(void) {
   int n;
   char word[MAXWORD];
 
-  printf("number of keys: %d\n", (int) NKEYS);
-
   while (get_word(word, MAXWORD) != EOF) {
     if (isalpha(word[0])) {
       if ((n = bin_search(key_table, word, NKEYS)) >= 0) {
-
         printf("word: %s\n", word);
         key_table[n].count++;
       }
@@ -44,7 +39,7 @@ int main(void) {
   return 0;
 }
 
-int bin_search(struct key *kt, char *word, int n_keys) {
+int bin_search(struct key kt[], char *word, int n_keys) {
   int cmp, m;
   int l = 0;
   int r = n_keys - 1;
@@ -52,7 +47,7 @@ int bin_search(struct key *kt, char *word, int n_keys) {
   while (l <= r) {
     m = (l + r) / 2;
 
-    if ((cmp = strcmp(word, kt[m].word) < 0)) {
+    if ((cmp = strcmp(word, kt[m].word)) < 0) {
       r = m - 1;
     } else if (cmp > 0) {
       l = m + 1;
