@@ -17,38 +17,40 @@ struct key {
 };
 
 int get_word(char *, int);
-int bin_search(struct key *, char *, int);
+struct key *bin_search(struct key *, char *, int);
 
 int main(void) {
-  int n;
   char word[MAXWORD];
+  struct key *key_p;
 
   while (get_word(word, MAXWORD) != EOF) {
     if (isalpha(word[0])) {
-      if ((n = bin_search(key_table, word, NKEYS)) >= 0) {
-        printf("word: %s\n", word);
-        key_table[n].count++;
+      if ((key_p = bin_search(key_table, word, NKEYS)) != NULL) {
+        key_p->count++;
       }
     }
   }
 
-  for (n = 0; n < NKEYS; n++) {
-    printf("%4d, %s\n", key_table[n].count, key_table[n].word);
+  for (key_p = key_table; key_p < key_table + NKEYS; key_p++) {
+    printf("%4d, %s\n", key_p->count, key_p->word);
   }
 
   return 0;
 }
 
-int bin_search(struct key kt[], char *word, int n_keys) {
-  int cmp, m;
-  int l = 0;
-  int r = n_keys - 1;
+struct key *bin_search(struct key *kt, char *word, int n_keys) {
+  int cmp;
+  struct key *l = &kt[0];
+  struct key *r = &kt[n_keys];
 
-  while (l <= r) {
-    m = (l + r) / 2;
+  struct key *m;
+  while (l < r) {
+    // pointer addition is illegal, subtraction is legal
+    // note that (r - l) produces an int
+    m = l + (r - l) / 2;
 
-    if ((cmp = strcmp(word, kt[m].word)) < 0) {
-      r = m - 1;
+    if ((cmp = strcmp(word, m->word)) < 0) {
+      r = m;
     } else if (cmp > 0) {
       l = m + 1;
     } else {
@@ -56,7 +58,7 @@ int bin_search(struct key kt[], char *word, int n_keys) {
     }
   }
 
-  return -1;
+  return NULL;
 }
 
 int get_word(char *word, int max_word) {
