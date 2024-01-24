@@ -1,0 +1,17 @@
+#include <stdio.h>
+#define BUFSIZE 100
+
+static char buf[BUFSIZE];
+static int b_i = 0;
+
+int get_char(void) {
+  return (b_i > 0) ? buf[--b_i] : getchar();
+}
+
+void un_get_char(int c) {
+  if (b_i == BUFSIZE) {
+    printf("error: character buffer is full attempting to store %c\n", c);
+  } else {
+    buf[b_i++] = c;
+  }
+}
