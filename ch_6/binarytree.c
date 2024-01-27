@@ -1,6 +1,6 @@
+#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h>
 #include <string.h>
 #define MAXWORD 100
 
@@ -53,12 +53,12 @@ struct node *add_node(struct node *n, char *s) {
 
 // malloc wrapper
 struct node *node_alloc(void) {
-  return (struct node *) malloc(sizeof(struct node));
+  return (struct node *)malloc(sizeof(struct node));
 }
 
 char *save_str(char *s) {
   char *p;
-  p = (char *) malloc(strlen(s) + 1); // + 1 incl. terminator
+  p = (char *)malloc(strlen(s) + 1); // + 1 incl. terminator
   if (p != NULL) {
     strcpy(p, s);
   }
